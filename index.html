@@ -98,7 +98,11 @@ main{padding:8px max(5vw,16px) 40px}
 .ds{font-size:12.5px;color:var(--mute);margin:-2px 0 2px}.ds summary{cursor:pointer;color:var(--btext);font-weight:600;font-size:12.5px;list-style:none}.ds summary::-webkit-details-marker{display:none}.ds summary::after{content:' +'}.ds[open] summary::after{content:' −'}.ds p{margin:6px 0 0;line-height:1.45}
 .shb{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;height:38px;margin-top:8px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:600 13px Poppins,sans-serif;cursor:pointer}
 .shb svg{width:16px;height:16px;color:#25d366}
-#sh{width:min(92vw,440px)}
+#sh{width:min(92vw,440px);max-height:92vh;overflow:auto}
+#sh .bt a{display:flex;align-items:center;justify-content:center;gap:8px;height:44px;border-radius:10px;border:1px solid #e3e7ee;background:#fff;color:#0b0b0b;font:600 13px Poppins,sans-serif;text-decoration:none}
+#sh .bt svg{width:18px;height:18px;flex:none}
+#sh .bt a:not(.pri) svg{color:#25d366}
+@media(max-width:600px){#sh .in{padding:14px;gap:10px}#sh h3{font-size:14px}#sh .pv{height:30vh}#sh textarea{min-height:90px;font-size:13px}}
 #sh .in{padding:18px;display:grid;gap:12px}
 #sh h3{margin:0;font-size:16px;padding-right:48px}
 #sh .pv{height:min(40vh,340px);background:#fff;border:1px solid #e3e7ee;border-radius:12px;display:grid;place-items:center;overflow:hidden}
