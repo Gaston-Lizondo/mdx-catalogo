@@ -397,7 +397,7 @@ function actHtml(d){const q=cq(d.n);
 function card(d){
  const badge=badges(d,'bdgs');
  const ic=`<svg class="ic"><use href="#c-${IC[d.c]||'box'}"/></svg>`, tc=`<span class="tc">Foto a confirmar</span>`, pf=`<a class="pf" href="${wa(HOLA+' ¿Me pasás fotos de '+d.n+'?')}">Pedir fotos</a>`;
- const ph=d.img?`<div class="ph"><img src="${d.img}" alt="${esc(d.n)}" loading="lazy" data-n="${esc(d.n)}">${badge}</div>`
+ const ph=d.img?`<div class="ph"><img src="${d.img}" alt="${esc(d.n)}" loading="lazy" data-n="${esc(d.n)}" onerror="this.remove()">${badge}</div>`
   :d.b?`<div class="ph br"><span class="bn">${ic}<span>${esc(d.b)}</span></span>${tc}${pf}${badge}</div>`
   :`<div class="ph no">${ic}${tc}${pf}${badge}</div>`;
  const meta=$('#ord').value==='upd'&&d.ud?`<div class="cat">Actualizado ${ddmm(d.ud)}</div>`:'';
