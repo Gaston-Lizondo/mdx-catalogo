@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Catálogo MDX · Mayorista de tecnología y electrodomésticos</title>
+<meta name="description" content="Tecnología, celulares y electrodomésticos a precio mayorista. Envíos a todo el país. Consultas y pedidos por WhatsApp.">
+<meta property="og:type" content="website"><meta property="og:title" content="Catálogo MDX · Precios mayoristas"><meta property="og:description" content="Tecnología, celulares y electrodomésticos a precio mayorista. Envíos a todo el país. Consultas y pedidos por WhatsApp."><meta property="og:url" content="https://gaston-lizondo.github.io/mdx-catalogo/"><meta property="og:image" content="https://gaston-lizondo.github.io/mdx-catalogo/og/mdx.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:locale" content="es_AR"><meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -149,6 +151,102 @@ dialog .x{position:absolute;top:8px;right:8px;width:44px;height:44px;border-radi
  .fab .lg{display:none}.fab{width:56px;height:56px;padding:0;justify-content:center}
 }
 @media(prefers-reduced-motion:no-preference){.card{transition:transform .15s,box-shadow .15s}.card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(11,11,11,.08)}}
+#toast{display:none;position:fixed;inset:0;margin:0;width:100%;height:100%;max-width:none;max-height:none;border:0;padding:16px;background:rgba(8,10,14,.34);-webkit-backdrop-filter:blur(2.5px);backdrop-filter:blur(2.5px);place-items:center;pointer-events:none;opacity:0;transition:opacity .2s ease;z-index:2147483000;overflow:hidden}
+#toast.vis{display:grid}#toast.on{opacity:1}
+#toast .tc{display:flex;align-items:center;gap:14px;max-width:min(92vw,380px);background:#0b0b0b;color:#fff;border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:16px 20px 16px 16px;box-shadow:0 18px 50px rgba(0,0,0,.45);transform:translateY(6px) scale(.97);transition:transform .22s cubic-bezier(.2,.9,.3,1.2);font-family:Poppins,system-ui,sans-serif}
+#toast.on .tc{transform:none}
+#toast .ck{flex:none;width:36px;height:36px;border-radius:50%;background:#25d366;color:#06301a;display:grid;place-items:center}
+#toast .ck svg{width:20px;height:20px}
+#toast.err .ck{background:#f04438;color:#fff}
+#toast b{display:block;font-size:15px;font-weight:600;line-height:1.3}
+#toast span.ts{display:block;margin-top:2px;font-size:12.5px;line-height:1.4;color:#c9ced8;font-weight:400}
+@media (prefers-reduced-motion:reduce){#toast,#toast .tc{transition:none}}
+#toast .i-er{display:none}#toast.err .i-er{display:block}#toast.err .i-ok{display:none}
+.bdgs{position:absolute;top:10px;left:10px;right:10px;display:flex;flex-wrap:wrap;gap:6px;pointer-events:none}
+.bdg{font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:3px 9px;border-radius:999px;color:#fff;background:var(--blue);box-shadow:0 1px 2px rgba(0,0,0,.12)}
+.bdg.d{background:#067647}.bdg.u{background:#c4320a}.bdg.o{background:#d92d20}
+.bdi{display:none}
+.old{font-size:13px;font-weight:500;color:var(--mute);margin-right:6px;text-decoration-thickness:1.5px}
+.stk{align-self:flex-start;font-size:11.5px;font-weight:600;color:light-dark(#8a4b00,#ffc46b);background:light-dark(#fff4e0,#2e2210);border-radius:999px;padding:2px 9px;margin-top:2px}
+.act{display:flex;gap:8px;margin-top:10px}
+.act .wa{margin:0;width:44px;flex:none;padding:0}
+.act .wa svg{width:20px;height:20px}
+.add{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;height:42px;border-radius:10px;border:1.5px solid var(--blue);background:transparent;color:var(--btext);font:600 13px Poppins,sans-serif;cursor:pointer;white-space:nowrap}
+.add svg{width:18px;height:18px;flex:none}
+.add:hover{background:var(--tint)}
+.qty{flex:1;display:flex;align-items:center;justify-content:space-between;height:42px;border-radius:10px;background:var(--blue);color:#fff;overflow:hidden}
+.qty button{width:44px;height:100%;border:0;background:transparent;color:#fff;font:600 20px Poppins,sans-serif;cursor:pointer}
+.qty button:hover{background:rgba(255,255,255,.14)}
+.qty span{font-weight:700;font-size:15px;font-variant-numeric:tabular-nums}
+.card.inc{border-color:var(--blue);box-shadow:0 0 0 1px var(--blue)}
+.ph.br .pf{color:#9dbdff}
+.vw{flex:none;width:44px;height:44px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ink);display:grid;place-items:center;cursor:pointer;padding:0}
+.vw svg{width:20px;height:20px}
+/* vista lista */
+#list.lst .grid{grid-template-columns:1fr;gap:8px}
+#list.lst .card{flex-direction:row;align-items:stretch;border-radius:12px}
+#list.lst .ph{width:84px;flex:none;aspect-ratio:auto;min-height:84px;border-bottom:0;border-right:1px solid var(--line);padding:0}
+#list.lst .ph img{padding:6px}
+#list.lst .ph.br,#list.lst .ph.no{border-bottom:0;gap:0;padding:0}
+#list.lst .ph.br{border-right:4px solid var(--blue)}
+#list.lst .ph .tc,#list.lst .ph .pf,#list.lst .ph .bn>span,#list.lst .bdgs{display:none}
+#list.lst .ph .ic{width:26px;height:26px}
+#list.lst .bd{flex-direction:row;flex-wrap:wrap;align-items:center;gap:4px 12px;padding:10px 12px}
+#list.lst .bdi{display:flex;flex-wrap:wrap;gap:4px;flex-basis:100%}
+#list.lst .bdi .bdg{font-size:9.5px;padding:2px 7px;box-shadow:none}
+#list.lst .cat{flex-basis:100%}
+#list.lst .nm{flex:1 1 220px;font-size:13.5px}
+#list.lst details.ds{display:none}
+#list.lst .stk{align-self:center;margin:0}
+#list.lst .pr{margin:0 0 0 auto;padding:0;font-size:18px}
+#list.lst .act{margin:0;flex:0 0 auto}
+#list.lst .add{flex:none;padding:0 14px;height:38px}
+#list.lst .qty{flex:none;width:132px;height:38px}
+#list.lst .act .wa{height:38px;width:40px}
+@media (max-width:560px){#list.lst .nm{flex-basis:100%}#list.lst .pr{margin:0;font-size:17px}#list.lst .act{margin-left:auto}#list.lst .add span{display:none}#list.lst .add{width:44px;padding:0}#list.lst .qty{width:112px}#list.lst .qty button{width:36px}}
+/* barra del pedido */
+body.hascart .fab{display:none}
+#cbar{position:fixed;left:50%;bottom:max(14px,env(safe-area-inset-bottom));transform:translateX(-50%);z-index:9;width:min(calc(100% - 24px),560px)}
+#cbar[hidden]{display:none}
+#cbtn{width:100%;display:flex;align-items:center;gap:12px;min-height:58px;padding:8px 10px 8px 16px;border:0;border-radius:16px;background:#0b0b0b;color:#fff;font:500 13px Poppins,sans-serif;cursor:pointer;box-shadow:0 14px 34px rgba(0,0,0,.35);text-align:left}
+#cbtn .ci{position:relative;flex:none;width:24px;height:24px}
+#cbtn .ci svg{width:24px;height:24px}
+#cbtn .cn{position:absolute;top:-8px;right:-10px;min-width:19px;height:19px;border-radius:999px;background:var(--blue);color:#fff;font-size:11px;font-weight:700;display:grid;place-items:center;padding:0 5px}
+#cbtn .ct{flex:1;min-width:0;line-height:1.3}
+#cbtn .ct b{display:block;font-size:15px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#cbtn .go{flex:none;background:var(--wa);color:var(--waink);border-radius:11px;padding:10px 14px;font-weight:600;font-size:13px}
+main{padding-bottom:96px}
+/* diálogo del pedido */
+#cart{width:min(94vw,520px);max-height:92vh;overflow:auto;color:#0b0b0b}
+#cart .in{padding:18px;display:grid;gap:14px}
+#cart h3{margin:0;font-size:18px;padding-right:48px}
+#cart .ci{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+#cart .ci li{display:grid;grid-template-columns:52px 1fr auto;gap:10px;align-items:center;padding-bottom:10px;border-bottom:1px solid #eef0f4}
+#cart .ci .th{width:52px;height:52px;border-radius:10px;background:#f4f6fa;display:grid;place-items:center;overflow:hidden}
+#cart .ci .th img{width:100%;height:100%;object-fit:contain}
+#cart .ci .th svg{width:22px;height:22px;color:#1557e0}
+#cart .ci .n{font-size:13px;font-weight:500;line-height:1.35}
+#cart .ci .u{font-size:12px;color:#5a6170;margin-top:2px}
+#cart .ci .r{display:grid;justify-items:end;gap:6px}
+#cart .ci .r b{font-size:14px;font-variant-numeric:tabular-nums;white-space:nowrap}
+#cart .qty{height:34px;width:108px;flex:none}
+#cart .qty button{width:34px;font-size:18px}
+#cart .qty span{font-size:14px}
+#cart .tot{display:grid;gap:4px;background:#f4f6fa;border-radius:12px;padding:12px 14px}
+#cart .tot div{display:flex;justify-content:space-between;font-size:14px}
+#cart .tot b{font-size:17px;font-variant-numeric:tabular-nums}
+#cart .tot small{font-size:11.5px;color:#5a6170}
+#cart .fl{display:grid;gap:10px}
+#cart label{display:grid;gap:5px;font-size:12.5px;font-weight:600;color:#3b414d}
+#cart input,#cart textarea{width:100%;box-sizing:border-box;font:15px Poppins,sans-serif;border:1px solid #d6dbe4;border-radius:10px;padding:10px 12px;color:#0b0b0b;background:#fff}
+#cart textarea{min-height:64px;resize:vertical}
+#cart .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+#cart .send{display:flex;align-items:center;justify-content:center;gap:8px;height:52px;border:0;border-radius:12px;background:var(--wa);color:var(--waink);font:600 15px Poppins,sans-serif;cursor:pointer}
+#cart .send svg{width:20px;height:20px}
+#cart .clr{justify-self:center;border:0;background:transparent;color:#5a6170;font:500 13px Poppins,sans-serif;text-decoration:underline;cursor:pointer;height:auto;padding:4px}
+#cart .hint{margin:0;font-size:12px;color:#5a6170;line-height:1.45;text-align:center}
+#cart .emp{text-align:center;color:#5a6170;padding:20px 0}
+@media (max-width:420px){#cart .two{grid-template-columns:1fr}}
 </style></head><body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
 <symbol id="c-tv" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="12" rx="1.5"/><path d="M8 21h8M12 17v4"/></g></symbol><symbol id="c-snow" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M4.9 7l14.2 10M4.9 17L19.1 7M9 4l3 2 3-2M9 20l3-2 3 2"/></g></symbol><symbol id="c-wash" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2.5" width="16" height="19" rx="2"/><circle cx="12" cy="13.5" r="4.5"/><path d="M7.5 6h.01M10.5 6h3"/></g></symbol><symbol id="c-flame" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c4 0 7-2.8 7-6.8 0-3.5-2.4-5.6-4-8.2-.6 2-1.6 3-3 3.4.4-3-1-6-3.5-7.4.3 3.4-3.5 6.3-3.5 11.6C5 19 8 22 12 22z"/></g></symbol><symbol id="c-plug" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2v5M15 2v5M6 7h12v4a6 6 0 0 1-12 0V7zM12 17v5"/></g></symbol><symbol id="c-bed" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18V6M3 14h18v4M21 14v-2a3 3 0 0 0-3-3h-7v5M7 11.5h.01"/></g></symbol><symbol id="c-drop" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16v2a6 6 0 0 1-6 6h-4a6 6 0 0 1-6-6v-2zM6 12V5a2 2 0 0 1 4 0M8 20l-1 2M16 20l1 2"/></g></symbol><symbol id="c-wave" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="6" r="3"/><path d="M2 15c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 5 2M2 19.5c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 5 2"/></g></symbol><symbol id="c-tool" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0 5 5L22 13.6l-8.4 8.4a2 2 0 0 1-2.8-2.8l8.4-8.4M14.7 6.3L9 12M3 21l6-6M5 3l4 4-2 2-4-4z"/></g></symbol><symbol id="c-box" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8l-9-5-9 5v8l9 5 9-5V8zM3 8l9 5 9-5M12 13v8"/></g></symbol><symbol id="c-phone" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18.5h2"/></g></symbol><symbol id="c-tablet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M11 17h2"/></g></symbol><symbol id="c-game" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12a4 4 0 0 1 4 4v1a4 4 0 0 1-7 2.6L14 14h-4l-1 1.6A4 4 0 0 1 2 13v-1a4 4 0 0 1 4-4zM7 11v3M5.5 12.5h3M16 12h.01M18 13.5h.01"/></g></symbol><symbol id="c-sat" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a6 6 0 0 0 6 6M4 10a10 10 0 0 0 10 10M13 11l7-7M15 4h5v5M8 16l3-3"/></g></symbol>
@@ -171,6 +269,7 @@ dialog .x{position:absolute;top:8px;right:8px;width:44px;height:44px;border-radi
  <div class="ctrl">
   <label class="search"><svg><use href="#i-search"/></svg><input id="q" type="search" placeholder="Buscar" aria-label="Buscar producto o marca"></label>
   <select id="ord" aria-label="Ordenar"><option value="">Ordenar</option><option value="asc">Menor precio</option><option value="desc">Mayor precio</option><option value="upd">Última actualización</option></select>
+  <button class="vw" id="vw" type="button" aria-label="Ver en lista" title="Ver en lista"></button>
  </div>
  <div class="chips" id="chips" role="group" aria-label="Categorías"></div>
 </div></div>
@@ -182,6 +281,10 @@ dialog .x{position:absolute;top:8px;right:8px;width:44px;height:44px;border-radi
 <footer class="foot"><div class="wrap"><div><svg class="logo" viewBox="0 0 698 242" role="img" aria-label="MDX"><path fill="#fff" fill-rule="evenodd" d="M161.62,201.99C156.31,201.15 149.81,197.52 145.81,193.14C143.59,190.71 144.23,191.82 133.75,172.38C131.38,167.97 128.34,162.35 127.01,159.88C121.15,149.02 117.82,142.85 112.55,133.00C108.27,125.01 105.13,119.30 104.81,118.94C104.39,118.47 103.86,118.37 103.64,118.72C103.51,118.94 102.76,122.36 99.50,137.75C98.55,142.22 96.86,150.15 95.74,155.38C93.22,167.18 89.00,187.05 87.88,192.38C86.54,198.76 86.23,199.98 85.84,200.38C85.51,200.71 82.63,200.74 62.82,200.69C41.82,200.63 40.16,200.59 39.91,200.20C39.61,199.71 38.49,204.24 56.34,133.50C58.47,125.04 62.26,110.03 64.75,100.12C76.40,53.88 75.69,56.51 77.33,53.51C82.27,44.51 90.94,39.30 100.12,39.83C107.55,40.26 113.66,44.50 119.67,53.38C120.74,54.96 125.86,64.31 128.36,69.25C129.16,70.83 129.90,72.24 130.01,72.38C130.12,72.51 131.02,74.20 132.01,76.12C133.01,78.05 134.54,80.94 135.41,82.55C136.28,84.16 137.00,85.54 137.00,85.61C137.00,85.68 137.60,86.84 138.33,88.18C139.88,91.02 142.09,95.17 151.76,113.50C155.64,120.86 159.41,128.00 160.14,129.38C163.67,136.01 163.59,135.88 164.25,135.88C164.92,135.88 164.79,136.09 169.10,127.88C170.04,126.09 171.01,124.29 171.25,123.88C171.49,123.46 172.39,121.78 173.25,120.12C174.12,118.47 176.57,113.86 178.70,109.88C180.83,105.89 183.50,100.88 184.62,98.75C194.33,80.37 198.62,72.26 199.00,71.62C199.24,71.21 200.09,69.64 200.88,68.12C201.67,66.61 202.74,64.59 203.25,63.62C203.76,62.66 204.83,60.64 205.63,59.12C211.22,48.58 216.67,43.00 223.75,40.60C225.73,39.93 226.14,39.88 229.62,39.89C232.97,39.90 233.63,39.97 235.72,40.59C241.29,42.23 245.79,45.57 249.57,50.88C252.08,54.41 253.08,57.10 255.60,67.12C256.64,71.25 257.66,75.30 257.87,76.12C258.49,78.56 261.95,92.48 263.25,97.75C263.91,100.43 267.61,115.17 271.46,130.50C275.31,145.83 278.81,159.72 279.22,161.38C279.64,163.03 281.38,170.00 283.10,176.88C284.81,183.75 286.79,191.62 287.48,194.36C288.18,197.11 288.75,199.49 288.75,199.66C288.75,199.83 288.57,200.14 288.36,200.36C288.01,200.71 285.60,200.75 265.61,200.75C244.13,200.75 243.23,200.73 242.78,200.28C242.53,200.03 242.24,199.38 242.15,198.85C242.05,198.31 241.59,196.13 241.12,194.00C239.97,188.75 239.15,184.96 238.39,181.38C238.05,179.72 237.48,177.08 237.13,175.50C236.78,173.92 236.22,171.33 235.89,169.75C235.55,168.17 234.77,164.51 234.15,161.62C233.54,158.74 232.24,152.66 231.26,148.12C230.29,143.59 229.34,139.14 229.13,138.25C228.93,137.36 228.14,133.70 227.37,130.12C226.60,126.55 225.75,122.56 225.46,121.25C225.18,119.94 224.79,118.71 224.60,118.51C224.02,117.90 224.13,117.74 220.32,124.88C219.21,126.94 217.87,129.47 217.32,130.50C216.78,131.53 215.12,134.62 213.64,137.38C209.94,144.24 209.25,145.53 207.87,148.12C207.22,149.36 205.95,151.72 205.05,153.38C204.16,155.03 202.59,157.95 201.56,159.88C200.53,161.80 199.38,163.94 199.00,164.62C198.10,166.25 191.24,179.05 188.70,183.86C184.36,192.04 182.23,194.97 178.45,197.90C176.76,199.21 172.98,201.08 170.88,201.64C169.08,202.11 163.73,202.32 161.62,201.99ZM298.26,199.77C298.08,199.44 298.00,184.19 298.00,150.66L298.00,102.03L298.56,101.64C299.05,101.29 301.43,101.25 319.31,101.25C339.17,101.25 339.51,101.26 340.00,101.75C340.49,102.24 340.50,102.58 340.50,130.36C340.50,155.58 340.54,158.50 340.89,158.86C341.25,159.21 344.02,159.25 367.67,159.25C390.23,159.25 394.45,159.19 396.72,158.86C404.79,157.68 410.84,155.13 416.72,150.45C422.32,145.98 426.05,140.55 428.12,133.88C429.57,129.22 429.85,127.21 429.86,121.62C429.88,116.02 429.45,113.19 427.87,108.35C425.76,101.90 421.62,96.16 415.62,91.40C412.90,89.23 411.93,88.60 409.29,87.27C405.48,85.36 402.07,84.28 397.33,83.49C394.49,83.02 392.78,83.01 347.04,83.00C315.66,82.99 299.53,82.90 299.22,82.73C298.96,82.60 298.75,82.29 298.75,82.05C298.75,81.57 301.98,76.57 317.57,52.88C319.56,49.85 321.96,46.21 322.89,44.79C323.91,43.24 324.83,42.11 325.19,41.98C326.03,41.66 392.33,41.68 397.38,42.01C419.74,43.43 438.68,51.98 452.58,66.92C459.51,74.36 464.17,81.98 467.54,91.35C472.98,106.49 473.58,126.33 469.09,143.00C462.65,166.90 443.12,187.51 419.25,195.57C413.21,197.62 407.96,198.80 401.12,199.66C397.90,200.07 393.67,200.11 348.08,200.18C299.03,200.26 298.52,200.26 298.26,199.77ZM455.51,199.89C455.34,199.69 455.29,199.38 455.40,199.20C455.51,199.02 457.46,196.62 459.74,193.88C462.02,191.12 464.16,188.52 464.50,188.10C464.85,187.67 467.61,184.35 470.65,180.72C473.68,177.09 478.02,171.88 480.27,169.12C484.48,164.00 488.33,159.35 495.38,150.88C497.57,148.24 500.56,144.63 502.00,142.86C503.44,141.09 505.02,139.19 505.51,138.64C506.00,138.08 507.42,136.39 508.66,134.88C509.90,133.36 512.62,130.05 514.70,127.52C517.01,124.73 518.50,122.71 518.50,122.38C518.50,122.06 517.55,120.72 516.18,119.11C514.90,117.60 508.78,110.30 502.57,102.88C496.37,95.45 489.92,87.74 488.24,85.75C486.56,83.76 483.83,80.49 482.18,78.50C480.52,76.51 478.65,74.26 478.01,73.50C475.40,70.42 468.96,62.72 466.50,59.74C465.06,58.00 462.19,54.56 460.12,52.11C453.18,43.85 452.23,42.66 452.31,42.27C452.37,41.91 455.05,41.87 479.08,41.81C495.77,41.77 505.95,41.84 506.23,41.99C506.67,42.23 508.64,44.52 514.50,51.62C516.20,53.69 518.33,56.27 519.24,57.38C520.15,58.48 521.59,60.22 522.44,61.25C526.41,66.09 542.33,85.31 550.21,94.79C553.04,98.19 554.71,100.00 555.02,100.00C555.45,100.00 556.59,98.70 562.92,91.00C566.53,86.61 573.82,77.77 576.22,74.88C577.70,73.09 579.87,70.44 581.06,69.00C582.24,67.56 584.99,64.22 587.17,61.59C589.34,58.96 592.02,55.71 593.12,54.36C594.23,53.02 596.31,50.49 597.75,48.74C599.19,47.00 601.04,44.76 601.85,43.78C602.66,42.80 603.56,41.93 603.85,41.86C604.14,41.79 616.35,41.77 631.00,41.81C654.95,41.87 657.63,41.91 657.69,42.27C657.77,42.68 657.51,43.01 649.64,52.42C646.90,55.69 643.58,59.66 642.26,61.23C640.95,62.80 638.26,66.01 636.28,68.35C634.30,70.70 631.60,73.92 630.28,75.50C628.97,77.08 626.87,79.57 625.63,81.03C624.39,82.49 622.08,85.23 620.50,87.13C618.92,89.03 616.89,91.45 616.00,92.50C614.29,94.52 612.15,97.06 609.38,100.38C608.46,101.47 604.65,106.02 600.92,110.48C591.25,122.01 591.25,122.01 591.25,122.39C591.25,122.81 592.24,124.04 603.13,137.12C607.82,142.76 612.47,148.38 613.48,149.61C614.48,150.84 616.07,152.75 617.00,153.86C618.58,155.72 621.40,159.12 631.72,171.59C633.87,174.19 636.36,177.18 637.25,178.24C644.79,187.21 654.75,199.29 654.75,199.46C654.75,200.23 654.13,200.25 627.98,200.25C602.50,200.25 601.80,200.24 601.20,199.77C600.86,199.50 599.70,198.18 598.61,196.83C597.52,195.48 595.83,193.42 594.86,192.25C593.88,191.08 591.35,187.99 589.22,185.38C587.09,182.76 584.19,179.22 582.77,177.50C581.35,175.78 579.33,173.31 578.28,172.00C577.23,170.69 575.40,168.44 574.20,167.00C573.00,165.56 568.85,160.49 564.97,155.75C555.98,144.75 555.55,144.25 554.97,144.25C554.66,144.25 553.23,145.78 550.81,148.70C542.31,158.98 539.07,162.91 538.12,164.12C537.58,164.82 533.92,169.27 530.01,174.01C519.83,186.34 517.34,189.36 513.15,194.48C511.10,196.97 509.10,199.30 508.69,199.63L507.96,200.25L481.89,200.25C459.36,200.25 455.77,200.20 455.51,199.89Z"/></svg><p>Mayorista de tecnología y electrodomésticos.</p><p>Av. Belgrano 1217, CABA · Envíos a todo el país</p><p>Precios vigentes al 21/11/2026, sujetos a stock y a cambios sin previo aviso.</p></div><div><p><a href="https://wa.me/5491130605171?text=Hola%20MDX!%20Quiero%20hacer%20una%20consulta">WhatsApp 11 3060-5171</a></p><p><a href="https://mdx.lovable.app/">mdx.lovable.app</a></p></div></div></footer>
 <a class="fab" href="https://wa.me/5491130605171?text=Hola%20MDX!%20Quiero%20hacer%20una%20consulta" aria-label="Escribinos por WhatsApp"><svg><use href="#i-wa"/></svg><span class="lg">Escribinos</span></a>
 <dialog id="sh"><button class="x" id="shx" aria-label="Cerrar">×</button><div class="in"><h3 id="sht"></h3><p class="rgm" id="shr"></p><div class="pv" id="shp"></div><textarea id="shtx" aria-label="Texto para WhatsApp"></textarea><div class="bt"><button class="pri" id="sws" hidden><svg><use href="#i-wa"/></svg>Compartir foto + texto</button><a class="pri" id="swa" href="#" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Abrir WhatsApp con el texto</a><button id="shd">Guardar foto</button><button id="shc">Copiar texto</button><button id="shi" class="full">Copiar foto (compu)</button></div><p class="hint" id="shh">En el celu: 1) Guardar foto  2) Abrir WhatsApp, elegí el contacto y adjuntá la foto.</p><p class="ok" id="sho" role="status"></p></div></dialog>
+<div id="toast" popover="manual" role="status" aria-live="polite"><div class="tc"><span class="ck"><svg class="i-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="i-er" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 7v6M12 17h.01"/></svg></span><div><b id="tm"></b><span class="ts" id="ts"></span></div></div></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="i-cart" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2l2.2 10.2a1.5 1.5 0 0 0 1.5 1.2h8.6a1.5 1.5 0 0 0 1.5-1.1L21 8H6.2"/><circle cx="9.5" cy="19.5" r="1.3"/><circle cx="17" cy="19.5" r="1.3"/></g></symbol><symbol id="i-grid" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.5"/></g></symbol><symbol id="i-rows" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="4" y="4.5" width="4" height="4" rx="1"/><rect x="4" y="10" width="4" height="4" rx="1"/><rect x="4" y="15.5" width="4" height="4" rx="1"/><path d="M11 6.5h9M11 12h9M11 17.5h9"/></g></symbol></svg>
+<div id="cbar" hidden><button id="cbtn" aria-label="Ver tu pedido"><span class="ci"><svg><use href="#i-cart"/></svg><span class="cn" id="ccn">0</span></span><span class="ct"><span id="cl1">Tu pedido</span><b id="ctot"></b></span><span class="go">Ver pedido</span></button></div>
+<dialog id="cart"><button class="x" id="cartx" aria-label="Cerrar">×</button><div class="in"><h3>Tu pedido</h3><ul class="ci" id="cil"></ul><div class="tot" id="ctt"></div><div class="fl"><div class="two"><label>Nombre o negocio<input id="cnom" autocomplete="organization" placeholder="Opcional"></label><label>Localidad<input id="cloc" autocomplete="address-level2" placeholder="Para cotizar el envío"></label></div><label>Nota<textarea id="cnot" placeholder="Opcional: colores, forma de pago, etc."></textarea></label></div><button class="send" id="csend"><svg><use href="#i-wa"/></svg>Enviar pedido por WhatsApp</button><p class="hint">Te respondemos por WhatsApp para confirmar stock, precio final y costo de envío.</p><button class="clr" id="cclr">Vaciar pedido</button></div></dialog>
 <dialog id="dlg"><button class="x" id="x" aria-label="Cerrar">×</button><img id="dimg" alt=""><p id="dcap"></p></dialog>
 <script>{
 const CLI=true, WA='5491130605171';
@@ -203,20 +306,9 @@ function chips(){
  const tog=`<button class="chip nf${CLI?' cf':''}" id="nf" aria-pressed="${nf}">${CLI?'Con foto':'Sin foto'}<span>${D.filter(d=>CLI?d.img:!d.img).length}</span></button><span class="sep" aria-hidden="true"></span>`;
  $('#chips').innerHTML=tog+all.map(([c,n])=>`<button class="chip" data-c="${esc(c)}" aria-pressed="${c===cur}">${c||'Todo'}<span>${n}</span></button>`).join('');
 }
-function card(d){
- const badge=CLI&&d.e==='Nuevo ingreso'?`<span class="new">Nuevo</span>`:'';
- const ic=`<svg class="ic"><use href="#c-${IC[d.c]||'box'}"/></svg>`, tc=`<span class="tc">Foto a confirmar</span>`;
- const ph=d.img?`<div class="ph"><img src="${d.img}" alt="${esc(d.n)}" loading="lazy" data-n="${esc(d.n)}">${badge}</div>`
-  :d.b?`<div class="ph br"><span class="bn">${ic}<span>${esc(d.b)}</span></span>${tc}${badge}</div>`
-  :`<div class="ph no">${ic}${tc}${CLI?`<a class="pf" href="${wa('Hola MDX! ¿Me pasás fotos de '+d.n+'?')}">Pedir fotos</a>`:''}${badge}</div>`;
- const meta=CLI?($('#ord').value==='upd'&&d.ud?`<div class="cat">Actualizado ${d.ud.slice(8)}/${d.ud.slice(5,7)}</div>`:''):`<div class="cat${d.of?' of':''}">${d.of?'Oferta del día '+d.f:(d.e==='Nuevo ingreso'?'Nuevo · ':'')+(d.b?'En lista '+d.f:'Publicado '+d.f)}${d.ch?' · <span class="ch">cambió precio</span>':''}</div>`;
- const low=CLI?`<a class="wa" href="${wa('Hola MDX! Quiero consultar por '+d.n+' ('+fm(d.v,d.u)+')')}"><svg><use href="#i-wa"/></svg><span>Consultar<span class="lg"> por WhatsApp</span></span></a>`
-  :'';
- return `<article class="card">${ph}<div class="bd">${meta}<div class="nm">${esc(d.n)}</div>${d.ds?`<details class="ds"><summary>Ver detalles</summary><p>${esc(d.ds).replace(/\n/g,'<br>')}</p></details>`:''}<div class="pr">${fm(d.v,d.u)}</div>${low}</div></article>`;
-}
 function draw(){
  const q=norm($('#q').value.trim());
- let L=base().filter(d=>(!cur||d.c===cur)&&(!q||norm(d.n+' '+(d.b||'')+' '+d.c).includes(q)));
+ let L=base().filter(d=>(!cur||d.c===cur)&&(!q||(h=>q.split(/\s+/).every(w=>h.includes(w)))(norm(d.n+' '+(d.b||'')+' '+d.c))));
  const o=$('#ord').value;
  $('#cnt').textContent=L.length+(L.length===1?' producto':' productos')+(q?` para “${$('#q').value.trim()}”`:'');
  if(!L.length){$('#list').innerHTML='<div class="empty">No encontramos productos con esa búsqueda.</div>';return}
@@ -231,7 +323,83 @@ $('#q').addEventListener('input',draw);$('#ord').addEventListener('change',draw)
 $('#list').addEventListener('click',e=>{const i=e.target.closest('img');if(!i)return;$('#dimg').src=i.src;$('#dimg').alt=i.alt;$('#dcap').textContent=i.dataset.n;try{$('#dlg').showModal()}catch(err){}});
 $('#x').addEventListener('click',()=>$('#dlg').close());
 $('#dlg').addEventListener('click',e=>{if(e.target.id==='dlg')$('#dlg').close()});
-chips();draw();
+let tT=0,tT2=0;
+function toast(m,sub,err){const t=document.getElementById('toast');if(!t)return;
+ document.getElementById('tm').textContent=m;const s=document.getElementById('ts');s.textContent=sub||'';s.hidden=!sub;
+ t.classList.toggle('err',!!err);clearTimeout(tT);clearTimeout(tT2);
+ const pop=typeof t.showPopover==='function';
+ if(pop){try{t.hidePopover()}catch(e){}try{t.showPopover()}catch(e){}}
+ else{const dl=[...document.querySelectorAll('dialog[open]')].pop();(dl||document.body).appendChild(t)}
+ t.classList.add('vis');t.classList.remove('on');void t.offsetWidth;t.classList.add('on');
+ tT=setTimeout(()=>{t.classList.remove('on');tT2=setTimeout(()=>{t.classList.remove('vis');if(pop)try{t.hidePopover()}catch(e){}},230)},err?3000:(sub?2100:1500))}
+function toastMsg(m){const err=/^No se pudo/i.test(m);let i=m.search(/[.:] /);
+ if(i<0)return toast(m.replace(/[.]$/,''),'',err);
+ toast(m.slice(0,i),m.slice(i+2).replace(/^./,c=>c.toUpperCase()),err)}
+const STORE='mdx',HOLA='Hola MDX!',CATN='Clientes';
+const DAY=864e5,ddmm=s=>s?s.slice(8,10)+'/'+s.slice(5,7):'';
+const isoAgo=s=>s?(Date.now()-new Date(s+'T12:00:00').getTime())/DAY:0;
+const stale=d=>!!d.av&&isoAgo(d.av)>14;
+const drop=d=>d.pa>d.v&&!!d.pc&&isoAgo(d.pc)<=14;
+let CART={};try{CART=JSON.parse(localStorage.getItem(STORE+'-cart')||'{}')||{}}catch(e){}
+const cq=k=>CART[k]||0;
+function cartSave(){try{localStorage.setItem(STORE+'-cart',JSON.stringify(CART))}catch(e){}}
+function badges(d,cls){const b=[];if(d.e==='Nuevo ingreso')b.push('<span class="bdg n">Nuevo</span>');if(drop(d))b.push('<span class="bdg d">Bajó de precio</span>');
+ if(d.tg==='Últimas unidades')b.push('<span class="bdg u">Últimas unidades</span>');if(d.tg==='Oferta')b.push('<span class="bdg o">Oferta</span>');return b.length?`<div class="${cls}">${b.join('')}</div>`:''}
+function actHtml(d){const q=cq(d.n);
+ const a=q?`<div class="qty"><button class="qm" aria-label="Quitar uno">−</button><span>${q}</span><button class="qp" aria-label="Agregar uno">+</button></div>`
+  :`<button class="add" aria-label="Agregar ${esc(d.n)} al pedido"><svg><use href="#i-cart"/></svg><span>Agregar</span></button>`;
+ return a+`<a class="wa" href="${wa(HOLA+' Quiero consultar por '+d.n+' ('+fm(d.v,d.u)+')')}" aria-label="Consultar por WhatsApp" title="Consultar por WhatsApp"><svg><use href="#i-wa"/></svg></a>`}
+function card(d){
+ const badge=badges(d,'bdgs');
+ const ic=`<svg class="ic"><use href="#c-${IC[d.c]||'box'}"/></svg>`, tc=`<span class="tc">Foto a confirmar</span>`, pf=`<a class="pf" href="${wa(HOLA+' ¿Me pasás fotos de '+d.n+'?')}">Pedir fotos</a>`;
+ const ph=d.img?`<div class="ph"><img src="${d.img}" alt="${esc(d.n)}" loading="lazy" data-n="${esc(d.n)}">${badge}</div>`
+  :d.b?`<div class="ph br"><span class="bn">${ic}<span>${esc(d.b)}</span></span>${tc}${pf}${badge}</div>`
+  :`<div class="ph no">${ic}${tc}${pf}${badge}</div>`;
+ const meta=$('#ord').value==='upd'&&d.ud?`<div class="cat">Actualizado ${ddmm(d.ud)}</div>`:'';
+ const st=stale(d)?`<div class="stk">Consultar stock</div>`:'';
+ const old=drop(d)?`<s class="old">${fm(d.pa,d.u)}</s>`:'';
+ return `<article class="card${cq(d.n)?' inc':''}" data-k="${esc(d.n)}">${ph}<div class="bd">${badges(d,'bdi')}${meta}<div class="nm">${esc(d.n)}</div>${d.ds?`<details class="ds"><summary>Ver detalles</summary><p>${esc(d.ds).replace(/\n/g,'<br>')}</p></details>`:''}${st}<div class="pr">${old}${fm(d.v,d.u)}</div><div class="act">${actHtml(d)}</div></div></article>`;
+}
+function cartItems(){const M=new Map(D.map(d=>[d.n,d]));return Object.keys(CART).map(k=>({k,q:CART[k],d:M.get(k)})).filter(x=>x.q>0)}
+function totals(L){let a=0,u=0;L.forEach(x=>{if(!x.d)return;if(x.d.u)u+=x.d.v*x.q;else a+=x.d.v*x.q});return {a,u}}
+const totTxt=t=>[t.a?fm(t.a,0):'',t.u?fm(t.u,1):''].filter(Boolean).join(' + ');
+function cartBar(){const L=cartItems().filter(x=>x.d),n=L.reduce((s,x)=>s+x.q,0);
+ $('#cbar').hidden=!n;document.body.classList.toggle('hascart',!!n);if(!n)return;
+ $('#ccn').textContent=n;$('#cl1').textContent=L.length===1?'1 producto en tu pedido':L.length+' productos en tu pedido';$('#ctot').textContent=totTxt(totals(L))}
+function setQ(k,q){if(q>0)CART[k]=Math.min(999,q);else delete CART[k];cartSave();
+ document.querySelectorAll('#list .card').forEach(c=>{if(c.dataset.k!==k)return;const d=D.find(x=>x.n===k);if(!d)return;c.querySelector('.act').innerHTML=actHtml(d);c.classList.toggle('inc',!!cq(k))});
+ cartBar();if($('#cart').open)cartList()}
+function cartList(){const L=cartItems();
+ if(!L.length){$('#cil').innerHTML='<li class="emp" style="display:block;border:0">Todavía no agregaste productos.</li>';$('#ctt').innerHTML='';$('#csend').disabled=true;return}
+ $('#csend').disabled=false;
+ $('#cil').innerHTML=L.map(x=>{const d=x.d;if(!d)return `<li data-k="${esc(x.k)}"><div class="th"></div><div><div class="n">${esc(x.k)}</div><div class="u">Ya no está en el catálogo</div></div><div class="r"><button class="clr rm">Quitar</button></div></li>`;
+  const th=d.img?`<img src="${d.img}" alt="">`:`<svg><use href="#c-${IC[d.c]||'box'}"/></svg>`;
+  return `<li data-k="${esc(x.k)}"><div class="th">${th}</div><div><div class="n">${esc(d.n)}</div><div class="u">${fm(d.v,d.u)} c/u</div></div><div class="r"><b>${fm(d.v*x.q,d.u)}</b><div class="qty"><button class="qm" aria-label="Quitar uno">−</button><span>${x.q}</span><button class="qp" aria-label="Agregar uno">+</button></div></div></li>`}).join('');
+ const t=totals(L);$('#ctt').innerHTML=(t.a?`<div><span>Total en pesos</span><b>${fm(t.a,0)}</b></div>`:'')+(t.u?`<div><span>Total en dólares</span><b>${fm(t.u,1)}</b></div>`:'')+'<small>Precios mayoristas sujetos a stock. El envío se cotiza aparte.</small>'}
+function cartMsg(){const L=cartItems().filter(x=>x.d);const t=totals(L);
+ let m=HOLA+' Quiero hacer este pedido:\n\n'+L.map(x=>`• ${x.q} x ${x.d.n} — ${fm(x.d.v,x.d.u)}${x.q>1?' c/u':''}`).join('\n')+`\n\nTotal: ${totTxt(t)}`;
+ const nm=$('#cnom').value.trim(),lc=$('#cloc').value.trim(),nt=$('#cnot').value.trim();
+ if(nm)m+='\nNombre: '+nm;if(lc)m+='\nLocalidad: '+lc;if(nt)m+='\nNota: '+nt;return {m,L,t,nm,lc,nt}}
+$('#list').addEventListener('click',e=>{const c=e.target.closest('.card');if(!c)return;const k=c.dataset.k;
+ if(e.target.closest('.add')){setQ(k,1);return}
+ if(e.target.closest('.qp')){setQ(k,cq(k)+1);return}
+ if(e.target.closest('.qm')){setQ(k,cq(k)-1);return}});
+$('#cil').addEventListener('click',e=>{const li=e.target.closest('li');if(!li||!li.dataset.k)return;const k=li.dataset.k;
+ if(e.target.closest('.qp'))setQ(k,cq(k)+1);else if(e.target.closest('.qm'))setQ(k,cq(k)-1);else if(e.target.closest('.rm'))setQ(k,0)});
+$('#cbtn').addEventListener('click',()=>{cartList();try{$('#cart').showModal()}catch(e){}});
+$('#cartx').addEventListener('click',()=>$('#cart').close());
+$('#cart').addEventListener('click',e=>{if(e.target.id==='cart')$('#cart').close()});
+try{const f=JSON.parse(localStorage.getItem(STORE+'-cli')||'{}');$('#cnom').value=f.n||'';$('#cloc').value=f.l||''}catch(e){}
+$('#csend').addEventListener('click',()=>{const o=cartMsg();if(!o.L.length)return;
+ try{localStorage.setItem(STORE+'-cli',JSON.stringify({n:o.nm,l:o.lc}))}catch(e){}
+ window.open(wa(o.m),'_blank','noopener');
+ try{if(typeof API==='string'&&API.indexOf('http')===0)fetch(API,{method:'POST',body:JSON.stringify({a:'pedido',cat:CATN,cliente:o.nm,loc:o.lc,nota:o.nt,items:o.L.map(x=>({n:x.d.n,q:x.q,p:fm(x.d.v,x.d.u)})),tars:o.t.a?fm(o.t.a,0):'',tusd:o.t.u?fm(o.t.u,1):''})}).catch(()=>{})}catch(e){}
+ toast('Pedido listo','Envialo en WhatsApp para que te lo confirmemos')});
+$('#cclr').addEventListener('click',()=>{CART={};cartSave();$('#cart').close();draw();cartBar();toast('Pedido vaciado')});
+let VW='g';try{VW=localStorage.getItem(STORE+'-vw')||'g'}catch(e){}
+function vwSet(v){VW=v;$('#list').classList.toggle('lst',v==='l');const b=$('#vw');b.innerHTML=`<svg><use href="#i-${v==='l'?'grid':'rows'}"/></svg>`;b.setAttribute('aria-label',v==='l'?'Ver en grilla':'Ver en lista');b.title=b.getAttribute('aria-label');try{localStorage.setItem(STORE+'-vw',v)}catch(e){}}
+$('#vw').addEventListener('click',()=>vwSet(VW==='l'?'g':'l'));vwSet(VW);
+chips();draw();cartBar();
 
 const API='https://script.google.com/macros/s/AKfycbz0to0yVdQvxda0MvpcOKHGUDJ5zLpNUj-kHg65V9yhKfg1xDUaR9nGboLfm0UQHWKo/exec';
 const SHEET='https://docs.google.com/spreadsheets/d/e/2PACX-1vQkH3JmyvXtQYB2Rb-3rB94MzYux-jKUo4Qeg7PjxGyULMgHs9Qr4tvs7bsdKBK-qEnMMQIxCaRfBYP/pub?gid=3&single=true&output=csv';
@@ -244,11 +412,11 @@ if(CLI&&SHEET.startsWith('http')){
  (API&&API.indexOf('__')!==0?fetch(API+'?a=pubcsv&_='+Date.now()).then(r=>{if(!r.ok)throw 0;return r.text()}).then(t=>{if(t.indexOf('Producto,')!==0)throw 0;return t}):Promise.reject(0)).catch(()=>fetch(SHEET+(SHEET.includes('?')?'&':'?')+'t='+Date.now()).then(r=>{if(!r.ok)throw 0;return r.text()})).then(t=>{
   const R=pcsv(t);const h=R.shift().map(x=>x.trim());const ix=k=>h.indexOf(k);
   const N=R.filter(r=>r[ix('Producto')]).map(r=>{const u=r[ix('Moneda')]==='USD'?1:0;const v=+String(r[ix('Precio venta')]).replace(/[^0-9]/g,'');
-   const o={c:r[ix('Categoría')],n:r[ix('Producto')],v,u,e:r[ix('Etiqueta')]==='Nuevo'?'Nuevo ingreso':''};const al=ix('Alta')>=0?String(r[ix('Alta')]).match(/(\d{1,2})\/(\d{1,2})\/(\d{4})/):null;if(al)o.fd=`${al[3]}-${al[2].padStart(2,'0')}-${al[1].padStart(2,'0')}`;
-   const b=r[ix('Marca')];if(b)o.b=b;const im=r[ix('Foto')];if(im)o.img=im;const ds=r[ix('Detalles')];if(ds)o.ds=ds;const ud=ix('Actualizado')>=0?String(r[ix('Actualizado')]).match(/(\d{1,2})\/(\d{1,2})\/(\d{4})/):null;if(ud)o.ud=`${ud[3]}-${ud[2].padStart(2,'0')}-${ud[1].padStart(2,'0')}`;return o}).filter(o=>o.v>0);
+   const o={c:r[ix('Categoría')],n:r[ix('Producto')],v,u,e:r[ix('Etiqueta')]==='Nuevo'?'Nuevo ingreso':'',tg:r[ix('Etiqueta')]||''};const al=ix('Alta')>=0?String(r[ix('Alta')]).match(/(\d{1,2})\/(\d{1,2})\/(\d{4})/):null;if(al)o.fd=`${al[3]}-${al[2].padStart(2,'0')}-${al[1].padStart(2,'0')}`;
+   const b=r[ix('Marca')];if(b)o.b=b;const im=r[ix('Foto')];if(im)o.img=im;const ds=r[ix('Detalles')];if(ds)o.ds=ds;const ud=ix('Actualizado')>=0?String(r[ix('Actualizado')]).match(/(\d{1,2})\/(\d{1,2})\/(\d{4})/):null;if(ud)o.ud=`${ud[3]}-${ud[2].padStart(2,'0')}-${ud[1].padStart(2,'0')}`;const pdt=k=>{const i=ix(k);const m=i>=0?String(r[i]).match(/(\d{1,2})\/(\d{1,2})\/(\d{4})/):null;return m?`${m[3]}-${m[2].padStart(2,'0')}-${m[1].padStart(2,'0')}`:''};o.av=pdt('Aviso');o.pc=pdt('Cambió precio');const pa=ix('Precio anterior')>=0?+String(r[ix('Precio anterior')]).replace(/[^0-9]/g,''):0;if(pa)o.pa=pa;return o}).filter(o=>o.v>0);
   if(N.length<10)return;
   N.sort((a,b)=>{const ia=ORDC.indexOf(a.c),ib=ORDC.indexOf(b.c);return (ia<0?99:ia)-(ib<0?99:ib)});
-  D=N;cats=[...new Set(D.map(d=>d.c))];if(cur&&!cats.includes(cur))cur='';chips();draw();
+  D=N;cats=[...new Set(D.map(d=>d.c))];if(cur&&!cats.includes(cur))cur='';chips();draw();cartBar();
  }).catch(()=>{});
 }
 
