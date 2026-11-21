@@ -233,6 +233,7 @@ $('#x').addEventListener('click',()=>$('#dlg').close());
 $('#dlg').addEventListener('click',e=>{if(e.target.id==='dlg')$('#dlg').close()});
 chips();draw();
 
+const API='__API__';
 const SHEET='https://docs.google.com/spreadsheets/d/e/2PACX-1vQkH3JmyvXtQYB2Rb-3rB94MzYux-jKUo4Qeg7PjxGyULMgHs9Qr4tvs7bsdKBK-qEnMMQIxCaRfBYP/pub?gid=3&single=true&output=csv';
 if(CLI&&SHEET.startsWith('http')){
  const ORDC=["Televisores", "Aires acondicionados", "Heladeras y freezers", "Lavarropas y secarropas", "Cocinas y termotanques", "Pequeños electro", "Colchones y sommiers", "Muebles de baño", "Piletas y verano", "Gastronomía", "Herramientas y jardín", "Hogar y otros", "Celulares", "iPhone", "Tablets y computadoras", "Consolas", "Starlink"];
@@ -240,7 +241,7 @@ if(CLI&&SHEET.startsWith('http')){
   if(q){if(c=='"'){if(t[i+1]=='"'){f+='"';i++}else q=false}else f+=c}
   else if(c=='"')q=true;else if(c==','){r.push(f);f=''}else if(c=='\n'||c=='\r'){if(c=='\r'&&t[i+1]=='\n')i++;r.push(f);R.push(r);r=[];f=''}else f+=c}
   if(f||r.length){r.push(f);R.push(r)}return R}
- fetch(SHEET+(SHEET.includes('?')?'&':'?')+'t='+Date.now()).then(r=>{if(!r.ok)throw 0;return r.text()}).then(t=>{
+ (API&&API.indexOf('__')!==0?fetch(API+'?a=pubcsv&_='+Date.now()).then(r=>{if(!r.ok)throw 0;return r.text()}).then(t=>{if(t.indexOf('Producto,')!==0)throw 0;return t}):Promise.reject(0)).catch(()=>fetch(SHEET+(SHEET.includes('?')?'&':'?')+'t='+Date.now()).then(r=>{if(!r.ok)throw 0;return r.text()})).then(t=>{
   const R=pcsv(t);const h=R.shift().map(x=>x.trim());const ix=k=>h.indexOf(k);
   const N=R.filter(r=>r[ix('Producto')]).map(r=>{const u=r[ix('Moneda')]==='USD'?1:0;const v=+String(r[ix('Precio venta')]).replace(/[^0-9]/g,'');
    const o={c:r[ix('Categoría')],n:r[ix('Producto')],v,u,e:r[ix('Etiqueta')]==='Nuevo'?'Nuevo ingreso':''};const al=ix('Alta')>=0?String(r[ix('Alta')]).match(/(\d{1,2})\/(\d{1,2})\/(\d{4})/):null;if(al)o.fd=`${al[3]}-${al[2].padStart(2,'0')}-${al[1].padStart(2,'0')}`;
